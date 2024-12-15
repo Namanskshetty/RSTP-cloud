@@ -8,20 +8,42 @@ This program requires a system with the following specifications:
 - Python version 3.6 or higher installed on the system
 
 > [!IMPORTANT]
-> You should have One drive account for this to work.
+> You should have One drive☁️  account for this to work.
 
-## Installation
+## Installation / Run
 
 To install the program, follow the steps below:
 
-1. ```sh
-  git clone  https://github.com/Namanskshetty/RSTP-cloud.git
+1. Clone the repo
+    ```sh
+      git clone  https://github.com/Namanskshetty/RSTP-cloud.git
     ```
-2. Insatall python viirtual enviroment.
+2. Install python virtual environment.
    ```sh
     pip install virtualenv
     ```
 3. Extract the `common_env.zip` in the same folder
-4. ```sh
+4. Activate the virtual environment.
+   ```sh
     .\common_env\Scripts\activate
     ```
+> [!NOTE]
+> All the required files are installed in the virtual environment.
+6. Run the `main.py` file:
+   ```sh
+    main.py
+   ```
+
+
+
+> [!WARNING]
+> In end deactivate the virtaul ennvrionent using
+> ```sh
+> deactivate
+> ```
+> OR
+> ```sh
+> .\common_env\Scripts\deactivate
+> ```
+
+Happy coding 😊
