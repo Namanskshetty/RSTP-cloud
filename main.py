@@ -14,34 +14,29 @@ def Video():
     if any(not cap.isOpened() for cap in caps):
         print("Error: Could not open one or more RTSP streams.")
         exit()
+
+    # Define the codec and create VideoWriter objects
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    outs = [
+        cv2.VideoWriter(f'output{i}.avi', fourcc, 20.0, (int(caps[i].get(3)), int(caps[i].get(4)))) for i in range(len(caps))
+    ]
+
     while True:
-        ret, frame = caps.read()
-        cv2.imshow(f'RTSP Stream {i}', frame)
-            #     # Press 'q' to exit the loop
+        for i, cap in enumerate(caps):
+            ret, frame = cap.read()
+            if not ret:
+                print(f"Error: Failed to capture frame from stream {i}.")
+                continue
+
+            # Write the frame to the output file
+            outs[i].write(frame)
+
+            # Display the frame (optional)
+            cv2.imshow(f'RTSP Stream {i}', frame)
+
+        # Press 'q' to exit the loop
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-    # # Define the codec and create VideoWriter objects
-    # fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    # outs = [
-    #     cv2.VideoWriter(f'output{i}.avi', fourcc, 20.0, (int(caps[i].get(3)), int(caps[i].get(4)))) for i in range(len(caps))
-    # ]
-    #
-    # while True:
-    #     for i, cap in enumerate(caps):
-    #         ret, frame = cap.read()
-    #         if not ret:
-    #             print(f"Error: Failed to capture frame from stream {i}.")
-    #             continue
-    #
-    #         # Write the frame to the output file
-    #         outs[i].write(frame)
-    #
-    #         # Display the frame (optional)
-    #         cv2.imshow(f'RTSP Stream {i}', frame)
-    #
-    #     # Press 'q' to exit the loop
-    #     if cv2.waitKey(1) & 0xFF == ord('q'):
-    #         break
 
     # Release everything when done
     for cap, out in zip(caps, outs):
