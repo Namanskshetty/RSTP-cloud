@@ -1,0 +1,9 @@
+The Rapid Spanning Tree Protocol (RSTP) is a significant enhancement of the classic Spanning Tree Protocol (STP). Its main objective is to eliminate network loops in Ethernet networks by ensuring a single active path exists between any two network devices. Let's explore some of the key features of RSTP:
+
+Enhanced Convergence Speed: RSTP is renowned for its quicker convergence compared to its predecessor STP. This allows it to swiftly adapt to changes in the network topology, thereby reducing downtime.
+
+Updated Port Roles: RSTP introduces new port roles such as Root Port, Designated Port, Alternate Port, and Backup Port. These roles contribute to greater network efficiency and reliability.
+
+Use of BPDUs: To maintain an updated view of the network topology, RSTP utilizes Bridge Protocol Data Units (BPDUs). These messages allow switches to exchange information about the network and react promptly to changes.
+
+Compatibility with STP: One of the advantages of RSTP is its backward compatibility with STP. This means it can be integrated into networks that still utilize devices running the older STP protocol.
